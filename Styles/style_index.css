@@ -1,0 +1,229 @@
+body {
+    background-color: blue ;
+    color: white;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    color: white;
+    top: 0px;
+    width: 80%;
+}
+
+@media screen and (min-width :601px) {
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        margin-top: 2%;
+        margin-bottom: 5%;
+    }
+}
+nav ul li {
+    list-style-type: none;
+    margin: 0% 7% 0% 7% ;
+}
+
+#accueil {
+    text-decoration: underline;
+    margin-left: 0%;
+}
+
+nav ul a {
+    color: white;
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+nav>a {
+    width: 20%;
+}
+
+nav   img {
+    width: 25%;
+    height: 25%;
+}
+
+#p_image {
+    display: flex;
+    justify-content: center;
+}
+
+#p_image  img {
+    max-width: 50%;
+    max-height: 50%;
+}
+
+
+h1 {
+    text-align: center;
+}
+
+section {
+    text-align: center;
+}
+
+#lien_vers_jouer  {
+    display: flex;
+    justify-content: center;
+    height: 40px; /* Augmentez la hauteur selon vos besoins */
+ }
+
+
+#lien_vers_jouer a{
+    color: blue;
+    background-color: white;
+    border-radius: 50%;
+    text-decoration: none;
+    width: 15%;
+    text-align: center;
+    font-size:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+footer {
+    background-color: #004AAD;
+    margin: 0px;
+    color:black;
+}
+
+footer a {
+    display: inline-flex;
+    justify-content: center;
+    color: blue;
+    text-decoration: none;
+    background-color: white;
+    border-radius: 15%;
+    bottom: 100px;
+    width: 20%;
+    text-align: center;
+    margin-left: 3%;
+}
+
+#p_contact {
+    right: 0px;
+    margin-left: 50%;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+
+footer article {
+    display: flex;
+    justify-content: space-around;
+}
+
+.sect1 {
+    grid-area: sect1;
+}
+
+.sect2 {
+    grid-area: sect2;
+}
+
+.sect3 {
+    grid-area: sect3;
+}
+
+.sect4 {
+    grid-area: sect4;
+}
+
+
+@media screen and (max-width :600px) {
+    footer article {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas:
+        "sect1 sect2"
+        "sect3 sect4";    
+    }
+
+    nav {
+        left: 0%;
+    }
+
+    
+    
+    nav ul li {
+        width: 15%;
+        list-style-type: none;
+        display: block;
+    }
+
+    nav ul li:hover {
+        font-size:25px;
+    }
+    
+    #accueil {
+        text-decoration: underline;
+    }
+    
+    nav ul a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.7rem;
+    }
+    
+    nav img {
+        width: 50%;
+        height: 50%;
+        display: none;
+    }
+
+    nav div {
+        display: block;
+        cursor: pointer;
+        margin: 15px;
+
+    }
+
+    nav div div {
+        width: 40px;
+        height: 7px;
+        background-color: white;
+        margin: 6px 0;
+        right: 25px;
+        border-radius: 10%;
+        border-color: white;
+        transition: 1s;
+        animation-direction: alternate;
+    }
+    
+    nav ul {
+        /* display: none; /* Initiallement masqué */
+        color: white;
+        margin: 20px;
+        background-color: rgb(8, 8, 129);
+        border-radius: 5% 20% 20% 5%;
+        padding-left: 2%;
+        margin-left: 0%;
+        width: 30%;
+        left: 0%;
+        top: 5%;
+        display: flex; 
+        flex-direction: column;
+        transform: translateX(-100%);
+        transition: transform 01s ease-in-out; 
+        left: -100%; /* Hors écran à gauche */
+
+    }
+    
+    nav ul.afficher_menu {
+        display: flex; 
+        flex-direction: column;
+        transform: translateX(0)    
+    }
+}
+
+
+

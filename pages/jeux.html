@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Styles/style_jeux.css">
+    <script src="../script/script_jeux.js" defer></script>
+    <title>Document</title>
+</head>
+<body >
+    <nav>
+        <div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <a href="index.html"><img src="../images/logo_quizz.png" alt="logo_quizz"></a>
+        <ul>        
+            <li id="accueil" ><a href="../index.html">Accueil</a></li>
+            <li id="jeux"><a href="jeux.html">Jeux</a></li>
+            <li id="quizz"> <a href="quizz.html">Quizz</a></li>
+            <li id="contact"><a href="contact.html">Contact</a></li>
+        </ul>
+
+        
+    </nav>
+    <h3 id="time"><span id="min">00</span>:<span id="sec">00</span></h3>
+
+    <section id="explication" class="explication">
+            <p>
+                Bienvenue dans notre jeu de QCM de musique ! 
+            </p>
+            <p>
+                Dans ce jeu, nous vous donnons des paroles de chansons et vous devez deviner qui en est l'auteur. 
+                Vous avez trois choix possibles pour chaque question. 
+            </p>
+            <p>
+                Le jeu est chronométré, alors essayez de répondre le plus rapidement possible. 
+                Votre score sera affiché à la fin du jeu.
+            </p>
+            <p>Cliquez sur "Commencer" pour démarrer le jeu.</p>
+        <button id="commencer">Commencer</button>
+    </section>
+
+    <h1>Choisir parmi ces 5 célébrités celui ou cellle qui a chanté ces paroles:</h1>
+    <section id="body_jeux">
+    </section>
+    <section class="evaluer">
+        <button id="evaluer">Terminer</button>
+    </section>
+    <section id="resultats" class="resultats">
+        <h2>Résultats</h2>
+        <p id="texte_resultat">
+            Félicitations pour avoir terminé le quiz !
+        </p>
+        <p>
+            Voici vos résultats :
+        </p>
+        <p id="score"></p>
+        <p id="temps"></p>
+        <button id="rejouer">Rejouer</button>
+    </section>
+</body>
+</html>

@@ -1,0 +1,343 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+body {
+    background-color: blue ;
+    color: white;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    color: white;
+    top: 0px;
+    width: 80%;
+}
+
+@media screen and (min-width :601px) {
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        margin-top: 2%;
+        margin-bottom: 5%;
+    }
+
+    .question li {
+        
+        width: 20%;
+        margin: 15px;
+        border: 7px blue solid;
+        cursor: pointer;
+    }
+}
+
+
+.question li:has(input[type= "checkbox"]:checked) {
+    border: 7px white solid;
+    border-radius: 15px;
+}
+
+input[type= "checkbox"] {
+    cursor: pointer;
+}
+nav ul li {
+    list-style-type: none;
+    margin: 0% 7% 0% 7% ;
+}
+
+#jeux {
+    text-decoration: underline;
+    margin-left: 0%;
+}
+
+nav ul a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.7rem
+}
+
+nav>a {
+    width: 20%;
+}
+
+nav   img {
+    width: 25%;
+    height: 25%;
+}
+#time {
+    background-color: white;
+    color: black;
+    width: 12%;
+    border-radius: 25%;
+    display: none;
+    justify-content: center;
+    height: 50%;
+    align-items: center;
+}
+
+
+section  ul{
+    list-style-type: none;
+    display: block;
+}
+
+section ul li {
+    margin: 1%;
+    font-size: 150%;
+}
+
+@media screen and (max-width :600px) {
+    .question li {
+        width: 80%;
+    }
+    #time {
+        position: fixed;
+        top: 1%;
+        right: 5%;
+        height: 40px;
+
+    }
+    nav img {
+        display: none;
+    }
+    nav {
+        left: 0%;
+    }
+
+    nav ul li {
+        width: 15%;
+        list-style-type: none;
+        display: block;
+    }
+
+    nav ul li:hover {
+        font-size:25px;
+    }
+
+    nav div {
+        display: block;
+        cursor: pointer;
+        margin: 15px;
+
+    }
+
+    nav div div {
+        width: 40px;
+        height: 7px;
+        background-color: white;
+        margin: 6px 0;
+        right: 25px;
+        border-radius: 10%;
+        border-color: white;
+        transition: 1s;
+        animation-direction: alternate;
+    }
+
+    nav ul {
+        /* display: none; /* Initiallement masqué */
+        color: white;
+        margin: 20px;
+        background-color: rgb(8, 8, 129);
+        border-radius: 5% 20% 20% 5%;
+        padding-left: 2%;
+        margin-left: 0%;
+        width: 30%;
+        left: 0%;
+        top: 5%;
+        display: flex; 
+        flex-direction: column;
+        transform: translateX(-100%);
+        transition: transform 01s ease-in-out; 
+        left: -100%; /* Hors écran à gauche */
+
+    }
+
+    nav ul.afficher_menu {
+        display: flex; 
+        flex-direction: column;
+        transform: translateX(0)    
+    }
+
+}
+
+input[ type = "button"] {
+    background-color: white;
+    height: 40px;
+    border-radius: 20%;
+    border-color: white;
+    color: blue;
+    text-align: center;
+}
+
+.navig {
+    display: flex;
+    justify-content: space-around;
+}
+.suivant, .precedant {
+    background-color: rgb(255,255,255);
+    border: none;
+    color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    text-decoration: none;
+    width: 80px;
+    border-radius: 15px;
+    margin-top: 0.8%;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+
+.precedant:hover , .suivant:hover{
+    border: 5px solid black;
+    box-shadow: 0 7px 7px 0 white ;
+    color: white;
+    background-color: rgb(3, 3, 80);
+}
+
+h1 {
+    display: none;
+    text-align: center;
+}
+
+.paroles {
+    text-decoration: underline;
+}
+.paroles, .qui_la_dit {
+    margin-left: 2.5%;
+}
+
+.explication {
+    padding: 1%;
+    text-align: center;
+    background-color: black;
+    border-radius: 15px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: auto;
+    max-width: 80%;
+    max-height: 90%;
+    box-sizing: border-box;
+    color: white; 
+    /*overflow: auto;*/
+    font-size: 130%;
+}
+.explication button {
+    background-color: white;
+    color: blue;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 120%;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.explication button:hover {
+    background-color: blue;
+    color: white;
+}
+
+
+.evaluer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+#evaluer {
+    background-color: rgb(255,255,255);
+    border: none;
+    color: blue;
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 80px;
+    height: 40px;
+    border-radius: 15px;
+    margin-top: 0.8%;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#evaluer:hover {
+    border: 5px solid black;
+    box-shadow: 0 7px 7px 0 white ;
+    color: white;
+    background-color: rgb(3, 3, 80);
+}
+
+
+
+.question {
+    right: -100%;
+}
+
+
+
+/* Section des résultats */
+.resultats {
+    background-color: black;
+    color: white;
+    padding: 2%;
+    border-radius: 15px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 80%;
+    max-height: 90%;
+    box-sizing: border-box;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 120%;
+}
+
+.resultats h2 {
+    font-size: 200%;
+    margin-bottom: 20px;
+}
+
+.resultats p {
+    margin: 10px 0;
+    font-size: 130%;
+}
+
+.resultats #score,
+.resultats #temps {
+    font-size: 150%;
+    font-weight: bold;
+}
+
+.resultats button {
+    background-color: white;
+    color: blue;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 120%;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.resultats button:hover {
+    background-color: blue;
+    color: white;
+}
