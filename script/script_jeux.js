@@ -1,3 +1,4 @@
+
 const lesQuestions = [
     {
         "id": 1,
@@ -62,7 +63,7 @@ const inserer_une_question = question => {
     data += `<h3 class="qui_la_dit"> Qui la dit ?</h3>`;
     data += `<ul class="ul_quest">`; //ouverure ul
     question.possibilités.forEach(element => {
-        data += `<li><input class="checkbox" type="checkbox" name= "${element}" id="${element}">${element}</li>`;
+        data += `<li><input class="checkbox" type="checkbox" name= "${element}" value="${element}">${element}</li>`;
     });
     data += `</ul>`;//fermiture ul
     // ouverure container des boutons de navigation
@@ -79,213 +80,247 @@ const inserer_une_question = question => {
 }
 
 
-document.querySelector('#commencer').addEventListener('click',() => {
-    // insertion des questions
-    document.querySelector("#explication").style.display = "none";
-    document.querySelector("#time").style.display = "flex";
-    lesQuestions.forEach( (quest) => inserer_une_question(quest) ); 
 
-    // affihage de la premiere question 
-    document.querySelectorAll('.question').forEach((question, ind_question ) => {
-        // non cliquable pour le premier bouton precedant
-        if (ind_question === 0) {
-            precedant = question.querySelector('.precedant');
-            precedant.disabled = true
-            precedant.style.pointerEvents = 'none';
-            precedant.style.opacity = '0.5';  
-        //Si c'est la dernier question 
-        } else if (ind_question === document.querySelectorAll('.question').length - 1 ) {
-            suivant = question.querySelector('.suivant');
-            suivant.disabled = true
-            suivant.style.pointerEvents = 'none';
-            suivant.style.opacity = '0.5';
+//const commencer_a_jouer = () =>{
+    document.querySelector('#commencer').addEventListener('click',() => {
+        console.log("je teste la fonction commencer_le_jeux");
+        // insertion des questions
+        document.querySelector("#explication").style.display = "none";
+        document.querySelector("#time").style.display = "flex";
+        les_questions.forEach(quest => inserer_une_question(quest)); // Insère les questions dans la page
+
+        // affihage de la premiere question 
+        document.querySelectorAll('.question').forEach((question, ind_question ) => {
+            // non cliquable pour le premier bouton precedant
+            if (ind_question === 0) {
+                precedant = question.querySelector('.precedant');
+                precedant.disabled = true
+                precedant.style.pointerEvents = 'none';
+                precedant.style.opacity = '0.5';  
+            //Si c'est la dernier question 
+            } else if (ind_question === document.querySelectorAll('.question').length - 1 ) {
+                suivant = question.querySelector('.suivant');
+                suivant.disabled = true
+                suivant.style.pointerEvents = 'none';
+                suivant.style.opacity = '0.5';
+            }
+            // aficher que la premiere question
+            question.style.display = ind_question === 0 ? 'block' : 'none';
+        })
+
+        // // De tel sorte qu'une seul selection soit possible
+        // document.querySelectorAll('.question').forEach(question => {
+        //     const checkboxs = question.querySelectorAll('input[type="checkbox"]');
+        //     console.log(checkboxs)
+        //     checkboxs.forEach(checkbox => {
+        //         checkbox.addEventListener('input', () => {
+        //             if (checkbox && checkbox.checked === true){
+        //                 checkboxs.forEach( chkbx => {
+        //                     chkbx.checked = false;
+        //                     console.log(chkbx.checked )
+        //                 })
+        //                 checkbox.checked = false;
+        //             }
+        //         })
+        //     })
+        // })
+
+        // dynamisation des bouton precedant et suivants
+        document.querySelectorAll('.suivant').forEach(suivant => {
+            suivant.addEventListener('click', () => {
+                const question_actuelle = suivant.closest('section');
+                const question_suivante = question_actuelle.nextElementSibling;
+                if (question_suivante)  {
+                    question_actuelle.style.display = 'none';
+                    question_suivante.style.display = 'block';
+                }
+                
+            })
+        })
+        
+
+        document.querySelectorAll('.precedant').forEach(precedant => {
+            precedant.addEventListener('click', () => {
+                const question_actuelle = precedant.closest('section');
+                const question_precedante = question_actuelle.previousElementSibling;
+        
+                if (question_precedante) {
+                    question_actuelle.style.display = 'none';
+                    question_precedante.style.display = 'block';
+                }
+            })
+        })
+
+        const optionsObservateur = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.1
+        };
+
+        const boutonEvaluer = document.querySelector('#evaluer'); // recuperation du bouton #evaluer
+        // definition de la fonction pour faire apparaitre le bouton a la derniere question 
+
+        const fonctionRappelObservateur = (entrees, observateur) => {
+            entrees.forEach(entree => {
+                const boutonEvaluer = document.querySelector('#evaluer'); // Définition à l'intérieur de la fonction
+                if (entree.isIntersecting) {
+                    boutonEvaluer.style.display = 'flex'; // Affiche le bouton si la dernière question est visible
+                } else {
+                    boutonEvaluer.style.display = 'none'; // Masque le bouton si la dernière question n'est pas visible
+                }
+            });
+        };
+
+        const observateur = new IntersectionObserver(fonctionRappelObservateur, optionsObservateur);
+
+
+        const derniereSectionQuestion = document.querySelector('.question:last-of-type');
+        if (derniereSectionQuestion) {
+            observateur.observe(derniereSectionQuestion); // Observation de la dernière question
         }
-        // aficher que la premiere question
-        question.style.display = ind_question === 0 ? 'block' : 'none';
-    })
-
-    // // De tel sorte qu'une seul selection soit possible
-    // document.querySelectorAll('.question').forEach(question => {
-    //     const checkboxs = question.querySelectorAll('input[type="checkbox"]');
-    //     console.log(checkboxs)
-    //     checkboxs.forEach(checkbox => {
-    //         checkbox.addEventListener('input', () => {
-    //             if (checkbox && checkbox.checked === true){
-    //                 checkboxs.forEach( chkbx => {
-    //                     chkbx.checked = false;
-    //                     console.log(chkbx.checked )
-    //                 })
-    //                 checkbox.checked = false;
-    //             }
-    //         })
-    //     })
-    // })
-
-    // dynamisation des bouton precedant et suivants
-    document.querySelectorAll('.suivant').forEach(suivant => {
-        suivant.addEventListener('click', () => {
-            const question_actuelle = suivant.closest('section');
-            const question_suivante = question_actuelle.nextElementSibling;
-            if (question_suivante)  {
-                question_actuelle.style.display = 'none';
-                question_suivante.style.display = 'block';
-            }
-            
-        })
-    })
-    
-
-    document.querySelectorAll('.precedant').forEach(precedant => {
-        precedant.addEventListener('click', () => {
-            const question_actuelle = precedant.closest('section');
-            const question_precedante = question_actuelle.previousElementSibling;
-    
-            if (question_precedante) {
-                question_actuelle.style.display = 'none';
-                question_precedante.style.display = 'block';
-            }
-        })
-    })
-
-    const optionsObservateur = {
-        root: null,
-        rootMargin: "0px",
-        threshold: 0.1
-    };
-
-    const boutonEvaluer = document.querySelector('#evaluer'); // recuperation du bouton #evaluer
-    // definition de la fonction pour faire apparaitre le bouton a la derniere question 
-
-    const fonctionRappelObservateur = (entrees, observateur) => {
-        entrees.forEach(entree => {
-            const boutonEvaluer = document.querySelector('#evaluer'); // Définition à l'intérieur de la fonction
-            if (entree.isIntersecting) {
-                boutonEvaluer.style.display = 'flex'; // Affiche le bouton si la dernière question est visible
-            } else {
-                boutonEvaluer.style.display = 'none'; // Masque le bouton si la dernière question n'est pas visible
-            }
-        });
-    };
-
-    const observateur = new IntersectionObserver(fonctionRappelObservateur, optionsObservateur);
 
 
-    const derniereSectionQuestion = document.querySelector('.question:last-of-type');
-    if (derniereSectionQuestion) {
-        observateur.observe(derniereSectionQuestion); // Observation de la dernière question
-    }
+        // gestion des choix des celebrites
+        document.querySelectorAll('.question').forEach(question => {
 
+        const les_li_celebrites = question.querySelectorAll("li");
+        
+        les_li_celebrites.forEach(une_li_celebrite => {
 
-    // gestion des choix des celebrites
-    document.querySelectorAll('.question').forEach(question => {
+            une_li_celebrite.addEventListener('click', (event) => {
+                event.stopPropagation();
+                const checkbox = une_li_celebrite.querySelector('input[type="checkbox"]');
+                if (checkbox && checkbox.checked) {
+                    checkbox.checked = false
+                } else {
+                    const checkboxs = question.querySelectorAll('input[type="checkbox"]');
+                    checkboxs.forEach(chckbx => {
+                        chckbx.checked = false;
+                    });
+                    checkbox.checked = true;
 
-    const les_li_celebrites = question.querySelectorAll("li");
-    
-    les_li_celebrites.forEach(une_li_celebrite => {
+                }
+            });
 
-        une_li_celebrite.addEventListener('click', (event) => {
-            event.stopPropagation();
             const checkbox = une_li_celebrite.querySelector('input[type="checkbox"]');
-            if (checkbox && checkbox.checked) {
-                checkbox.checked = false
-            } else {
-                const checkboxs = question.querySelectorAll('input[type="checkbox"]');
-                checkboxs.forEach(chckbx => {
-                    chckbx.checked = false;
-                });
-                checkbox.checked = true;
+                if (checkbox) {
+                    checkbox.addEventListener('click', (event) => {
+                        checkbox.checked = !checkbox.checked;
+                    });
+                }
 
-            }
         });
 
-        const checkbox = une_li_celebrite.querySelector('input[type="checkbox"]');
-            if (checkbox) {
-                checkbox.addEventListener('click', (event) => {
-                    checkbox.checked = !checkbox.checked;
-                });
+        });
+    });
+//};
+
+
+//const evaluer_le_jeux = () => {
+    function evaluer_une_question(section_question) {
+        let answer = false;
+        les_questions.forEach(quest => {//Parcourir la liste des questions
+            if (section_question.id == quest.id){ //Si la question dans la page est la meme que celle dans la base de donnees
+                const checkedInput = section_question.querySelector("input[type='checkbox']:checked");
+                
+                if (checkedInput) {//Si y a un element selectionne 
+                    checkedInput.value === quest.célébrité ? answer = true : answer = false;
+                }
+
             }
-
-    });
-
-    });
-});
-
-
-
-function afficherChrono() {
-    let secondes = parseInt(document.querySelector('#sec').innerHTML);
-    let minutes = parseInt(document.querySelector('#min').innerHTML);
-
-    if (secondes === 59) {
-        minutes += 1;
-        secondes = 0;
-    } else {
-        secondes += 1;
+        })
+        return answer;  
     }
 
-    document.querySelector('#sec').innerHTML = secondes.toString().padStart(2, '0');
-    document.querySelector('#min').innerHTML = minutes.toString().padStart(2, '0');    
-}
 
-// Fonction pour gérer l'intervalle en fonction de l'affichage de #time
-function gererchrono() {   
-    if (document.querySelector("#time").style.display === "flex") {
-        if (!window.intervalID) {
-            window.intervalID = window.setInterval(afficherChrono, 1000);
-        }
-    } else {
-        clearInterval(window.intervalID);
-        window.intervalID = null;
-    }
-}
+    document.querySelector("#evaluer").addEventListener('click', () => {
+        let nb_good_answer = 0 ;
+        document.querySelectorAll("#body_jeux section").forEach((section) => {
+            evaluer_une_question(section) ? nb_good_answer +=1: nb_good_answer +=0
+        });
 
-document.addEventListener("DOMContentLoaded", function() {
-    // Vérification périodique de l'affichage de #time
-    window.setInterval(gererchrono, 1000);
-});
+        const min = parseInt(document.querySelector("#min").textContent);
+        const sec = parseInt(document.querySelector("#sec").textContent);
+        const score = document.querySelector("#score");
+        const temps = document.querySelector("#temps");
+        const minuteur = document.querySelector("#time");
+        const nb_questions = document.querySelectorAll("#body_jeux section").length;
+        minuteur.style.display = 'none';
+        
+        temps.textContent = sec === 0 ?  `Temps: ${min} minutes` : `Temps: ${min} minutes et ${sec} secondes`;
+        score.textContent = `${nb_good_answer} bonnes reponses/${nb_questions} questions`;
 
-
-function evaluer_une_question(section_question) {
-    let answer = false;
-    lesQuestions.forEach(quest => {//Parcourir la liste des questions
-        if (section_question.id == quest.id){ //Si la question dans la page est la meme que celle dans la base de donnees
-            const checkedInput = section_question.querySelector("input[type='checkbox']:checked");
-            
-            if (checkedInput) {//Si y a un element selectionne 
-                checkedInput.id === quest.célébrité ? answer = true : answer = false;
-            }
-
-        }
-    })
-    return answer;  
-}
+        document.querySelector("#body_jeux").style.display = 'none';
+        document.querySelector("#resultats").style.display = 'block';
 
 
-document.querySelector("#evaluer").addEventListener('click', () => {
-    let nb_good_answer = 0 ;
-    document.querySelectorAll("#body_jeux section").forEach((section) => {
-        evaluer_une_question(section) ? nb_good_answer +=1: nb_good_answer +=0
     });
-
-    const min = parseInt(document.querySelector("#min").textContent);
-    const sec = parseInt(document.querySelector("#sec").textContent);
-    const score = document.querySelector("#score");
-    const temps = document.querySelector("#temps");
-    const minuteur = document.querySelector("#time");
-    const nb_questions = document.querySelectorAll("#body_jeux section").length;
-    minuteur.style.display = 'none';
-    
-    temps.textContent = sec === 0 ?  `Temps: ${min} minutes` : `Temps: ${min} minutes et ${sec} secondes`;
-    score.textContent = `${nb_good_answer} bonnes reponses/${nb_questions} questions`;
-
-    document.querySelector("#body_jeux").style.display = 'none';
-    document.querySelector("#resultats").style.display = 'block';
+//};
 
 
-});
+//const gerer_le_chronometre = () => {
+    function afficherChrono() {
+        let secondes = parseInt(document.querySelector('#sec').innerHTML);
+        let minutes = parseInt(document.querySelector('#min').innerHTML);
+
+        if (secondes === 59) {
+            minutes += 1;
+            secondes = 0;
+        } else {
+            secondes += 1;
+        }
+
+        document.querySelector('#sec').innerHTML = secondes.toString().padStart(2, '0');
+        document.querySelector('#min').innerHTML = minutes.toString().padStart(2, '0');    
+    }
+
+    // Fonction pour gérer l'intervalle en fonction de l'affichage de #time
+    function gererchrono() {   
+        if (document.querySelector("#time").style.display === "flex") {
+            if (!window.intervalID) {
+                window.intervalID = window.setInterval(afficherChrono, 1000);
+            }
+        } else {
+            clearInterval(window.intervalID);
+            window.intervalID = null;
+        }
+    }
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // Vérification périodique de l'affichage de #time
+        window.setInterval(gererchrono, 1000);
+    });
+//};
+let les_questions;
+// recuperation des questions via l'api 
+const xml_question = new XMLHttpRequest();
+xml_question.open("GET", "https://mi-phpmut.univ-tlse2.fr/~assane.kane/QuizzMusik/php/get_question.php", true);
+xml_question.onreadystatechange = function () {
+    if (xml_question.readyState === 4) {
+        if (xml_question.status === 200) {
+            try {
+                les_questions = JSON.parse(xml_question.responseText);
+                console.log(data_object); // Affiche les données dans la console
+                commencer_a_jouer();
+                //evaluer_le_jeux();
+                gerer_le_chronometre();
+            } catch (e) {
+                console.error("Erreur de parsing JSON:", e);
+            }
+        } else {
+            console.error("Erreur HTTP:", xml_question.status, xml_question.statusText);
+        }
+    }
+};
+xml_question.onerror = function () {
+    console.error("Erreur de réseau.");
+};
+xml_question.send();
 
 
 document.querySelector("#rejouer").addEventListener('click', () => {
     location.reload()
+    
 })
 

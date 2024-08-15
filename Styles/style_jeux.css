@@ -273,7 +273,7 @@ h1 {
     cursor: pointer;
 }
 
-#evaluer:hover {
+#evaluer:hover  {
     border: 5px solid black;
     box-shadow: 0 7px 7px 0 white ;
     color: white;
@@ -284,6 +284,7 @@ h1 {
 
 .question {
     right: -100%;
+    display: none;
 }
 
 

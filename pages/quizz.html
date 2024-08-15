@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html >
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +21,57 @@
             <li id="quizz"> <a href="quizz.html">Quizz</a></li>
             <li id="contact"><a href="contact.html">Contact</a></li>
         </ul>
-
+    </nav>    
+    <section id="explication" class="explication">
+        <section id="explicationbis" class="explication">
+            <p>
+                Bienvenue sur notre plateforme de soumission de questions !
+            </p>
+            <p>
+                Ici, vous pouvez proposer des questions 
+                Chaque question doit inclure une citation, le nom de la célébrité qui l'a prononcée, et trois possibilités de réponse.
+            </p>
+            <p>
+                Pour proposer une question, veuillez remplir le formulaire suivant avec les informations requises. 
+                Assurez-vous que les informations sont exactes pour garantir la qualité des questions dans notre base de données.
+            </p>
+            <p>
+                Une fois le formulaire rempli, cliquez sur "Soumettre". Votre question sera alors ajoutées à notre base de données après vérification.
+            </p>
+            <p>Cliquez sur "Soumettre une Question" pour accéder au formulaire.</p>
+            <button id="soumettre-question">Soumettre une Question</button>
+        </section>
         
-    </nav>        
+    </section>    
+    <form action="../php/quizz.php" name="question" id="question" method="post"> 
+        <section id="formu">
+            <section id="sec_lang" class="champ">
+                <label id="lbl_lang" for="lang">Quelle est la langue de l'auteur</label>
+                <select name="lang" id="lang">
+                    <option value="" selected></option>
+                    <option value="français">français</option>
+                    <option value="anglais">anglais</option>
+                </select> <br>
+            </section>
+                <section id="sect_parole" class="champ">
+                <label for="parole">Parole ou citation</label>
+                <input type="text" id="parole" name="parole" placeholder="parole ou citation"> <br>
+            </section>
+            <section id="sect_auteur" class="champ">
+                <label for="auteur">L'auteur</label>
+                <input type="text" name="auteur" id="auteur" placeholder="auteur"> 
+            </section>
+            <section id="sect_possib1" class="champ">
+                <label for="possibilite1s">Possibilité 1</label>
+                <input type="text" name="possibilite1" id="possibilite1" placeholder="possibilité 1">
+            </section>
+            <section id="sect_possb2" class="champ">
+                <label for="possibilite2">Possibilité 2</label>
+                <input type="text" name="possibilite2" id="possibilite2" placeholder="possibilité 2"> <br>
+            </section> 
+            
+            <input type="submit" value="soumettre">
+        </section>
+    </form>
 </body>
+</html>
