@@ -24,7 +24,8 @@ mysqli_set_charset($con, "utf8");
 $req_recup = 
 "SELECT Questions.id, langue, parole, auteur, possibilite1, possibilite2, possibilite3
 FROM Questions
-INNER JOIN Possibilites ON Possibilites.id = Questions.id";
+INNER JOIN Possibilites ON Possibilites.id = Questions.id
+ORDER BY RAND()";
 
 $les_questions = mysqli_query($con, $req_recup);
 if (!$les_questions) {
@@ -35,12 +36,14 @@ if (!$les_questions) {
 
 $tab_questions = array();
 while ($liste_question = mysqli_fetch_array($les_questions)) {
+    $possibilites = [$liste_question['possibilite1'], $liste_question['possibilite2'], $liste_question['possibilite3']];
+    shuffle($possibilites);
     $question = array(
         "id" => $liste_question['id'],
         "langue" => $liste_question['langue'],
         "parole" => $liste_question['parole'],
         "célébrité" => $liste_question['auteur'],
-        "possibilités" => array($liste_question['possibilite1'], $liste_question['possibilite2'], $liste_question['possibilite3'])
+        "possibilités" => array($possibilites[0], $possibilites[1], $possibilites[2])
     );
     $tab_questions[] = $question;
 }

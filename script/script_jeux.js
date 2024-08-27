@@ -1,33 +1,3 @@
-
-const lesQuestions = [
-    {
-        "id": 1,
-        "parole": "Incroyablement puissantes, rapides et obéissantes les machines sont aussi totalement stupides.",
-        "célébrité": "Gérard Berry",
-        "possibilités": [ "Tim Berners Lee", "Ada Lovelace","Gérard Berry"]
-    },
-    {
-    "id": 2,
-    "parole": "The power of the Web is in its universality. Access by everyone regardless of disability is an essential aspect.",
-    "célébrité": "Tim Berners Lee",
-    "possibilités": [ "Tim Berners Lee", "Ada Lovelace","Gérard Berry"]
-    },
-    {
-        "id": 3,
-        "parole": "La machine analytique n'a nullement la prétention de créer quelque chose par elle-même.",
-        "célébrité": "Ada Lovelace",
-        "possibilités": [ "Tim Berners Lee", "Ada Lovelace","Gérard Berry"]
-    }
-]
-
-const questionComplete =  {
-    "id": 1,
-    "parole": "Incroyablement puissantes, rapides et obéissantes les machines sont aussi totalement stupides.",
-    "célébrité": "Gérard Berry",
-    "possibilités": [ "Tim Berners Lee", "Ada Lovelace","Gérard Berry"]
-}
-
-
 document.addEventListener("DOMContentLoaded", () => { // Après que le contenu soit chargé 
     const display_menu = () => {
         const navUl = document.querySelector("nav ul");
@@ -45,9 +15,6 @@ document.addEventListener("DOMContentLoaded", () => { // Après que le contenu s
         console.error("Element nav div not found");
     }
 });
-
-
-
 
 
 
@@ -295,16 +262,15 @@ const inserer_une_question = question => {
 let les_questions;
 // recuperation des questions via l'api 
 const xml_question = new XMLHttpRequest();
-xml_question.open("GET", "https://mi-phpmut.univ-tlse2.fr/~assane.kane/QuizzMusik/php/get_question.php", true);
+xml_question.open("GET", "https://mi-phpmut.univ-tlse2.fr/~assane.kane/QuizzMusik/php/quizz.php", true);
 xml_question.onreadystatechange = function () {
     if (xml_question.readyState === 4) {
         if (xml_question.status === 200) {
             try {
                 les_questions = JSON.parse(xml_question.responseText);
-                console.log(data_object); // Affiche les données dans la console
-                commencer_a_jouer();
+                //commencer_a_jouer();
                 //evaluer_le_jeux();
-                gerer_le_chronometre();
+                //gerer_le_chronometre();
             } catch (e) {
                 console.error("Erreur de parsing JSON:", e);
             }

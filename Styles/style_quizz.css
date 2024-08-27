@@ -117,9 +117,46 @@ nav   img {
         width: 99.9%;
     }
 }
-.explication {
-    display: none;
+/* Bouton de soumission */
+#soumettre_question {
+    background-color: white; /* Teinte de bleu harmonisée */
+    color: blue;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.2rem;
+    margin: 20px auto;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
+
+#soumettre_question:hover {
+    background-color: blue; /* Couleur plus sombre au survol */
+    transform: scale(1.05); /* Légère augmentation de taille pour attirer l'attention */
+    color: white;
+}
+
+#soumettre_question:active {
+    background-color: blue; /* Couleur encore plus sombre lors du clic */
+    transform: scale(0.98); /* Légère réduction pour l’effet de clic */
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 600px) {
+    #soumettre_question {
+        width: 90%; /* Assurez une bonne lisibilité sur les petits écrans */
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}
+
+#succed_submit {
+    display: block;
+}
+
 #explication {
     padding: 7px;
     background-color: black;
@@ -138,6 +175,7 @@ form {
     background-color: rgba(0, 0, 139, 0.8);
     padding: 2%;
     border-radius: 15px;
+    display: none;
 }
 
 form section {
@@ -155,8 +193,7 @@ form select {
     width: 100%;
 }
 
-form input[type="text"]
- {
+form input[type="text"] {
     width: 95%;
     padding: 10px;
     border: none;
@@ -191,4 +228,52 @@ form input[type="submit"]:hover {
         width: 90%;
         font-size: 110%;
     }
+}
+
+
+/* Style du popup */
+.popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent moins sombre */
+    z-index: 1000; /* Assurez-vous que le popup est au-dessus des autres éléments */
+}
+
+/* Contenu du popup */
+.popup-content {
+    background-color: #000; /* Fond du popup */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+    max-width: 90%;
+    width: 80%;
+    text-align: center;
+    color: #fff; /* Texte blanc pour contraster avec le fond sombre */
+    position: relative;
+    display: flex;
+    flex-direction: column; /* Aligne les éléments en colonne */
+    justify-content: center; /* Centre le contenu verticalement */
+    height: 200px; /* Fixe une hauteur pour le popup (ajustez selon vos besoins) */
+}
+
+/* Bouton de fermeture */
+.close-button {
+    position: absolute;
+    bottom: 10px; /* Positionne le bouton en bas */
+    left: 50%; /* Centre le bouton horizontalement */
+    transform: translateX(-50%); /* Ajuste le bouton pour être centré */
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff; /* Couleur du bouton de fermeture */
+}
+
+/* Popup caché par défaut */
+.hidden {
+    display: none;
 }
