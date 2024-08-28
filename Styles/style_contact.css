@@ -26,7 +26,7 @@ nav ul li {
     margin: 0% 7% 0% 7% ;
 }
 
-#accueil {
+#contact {
     text-decoration: underline;
     margin-left: 0%;
 }
@@ -87,24 +87,7 @@ section {
 }
 
 
-footer {
-    background-color: #004AAD;
-    margin: 0px;
-    color:black;
-}
 
-footer a {
-    display: inline-flex;
-    justify-content: center;
-    color: blue;
-    text-decoration: none;
-    background-color: white;
-    border-radius: 15%;
-    bottom: 100px;
-    width: 20%;
-    text-align: center;
-    margin-left: 3%;
-}
 
 #p_contact {
     right: 0px;
@@ -117,38 +100,9 @@ html, body {
 }
 
 
-footer article {
-    display: flex;
-    justify-content: space-around;
-}
-
-.sect1 {
-    grid-area: sect1;
-}
-
-.sect2 {
-    grid-area: sect2;
-}
-
-.sect3 {
-    grid-area: sect3;
-}
-
-.sect4 {
-    grid-area: sect4;
-}
 
 
 @media screen and (max-width :600px) {
-    footer article {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
-        grid-template-areas:
-        "sect1 sect2"
-        "sect3 sect4";    
-    }
-
     nav {
         left: 0%;
     }
@@ -226,7 +180,52 @@ footer article {
     }
 }
 
-#presentation {
-    font-size: 20px
+
+
+section {
+    text-align: center;
+    padding: 10px;
+    max-width: 800px;
+    margin: 10px auto;
+    background: white; /* Couleur de fond blanche pour le formulaire */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
 }
 
+
+section p {
+    color: blue;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+form input, textarea {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1 px solid  #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+form input[type="submit"] {
+    background-color: blue; /* Conserve la couleur de fond bleue pour le bouton */
+    color: white; /* Texte blanc pour le bouton */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 5px; /* Coins arrondis pour le bouton */
+}
+
+form input[type="submit"]:hover {
+    background-color: darkblue; /* Couleur plus foncée au survol */
+}

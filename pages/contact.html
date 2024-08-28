@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Styles/style_contact.css">
+    <script src="../script/script.js" defer></script>
+    <title>Contact</title>
+</head>
+<body>
+    <nav>
+        <div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <a href="../index.html"><img src="../images/logo_quizz.png" alt="logo_quizz"></a>
+        <ul>        
+            <li id="accueil" ><a href="../index.html">Accueil</a></li>
+            <li id="jeux"><a href="jeux.html">Jeux</a></li>
+            <li id="quizz"> <a href="quizz.html">Quizz</a></li>
+            <li id="contact"><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <section  >
+        <p>Joignez nous par mail</p>
+        <form action="https://mi-phpmut.univ-tlse2.fr/~assane.kane/QuizzMusik/php/envoyer_mail.php" method="post">
+            <label for="nom"></label>
+            <input type="text" name="nom" id="nom" placeholder="nom" required>
+            <label for="mail"></label>
+            <input type="email" name="mail" id="mail" placeholder="votre adresse mail" required>
+
+            <label for="objet"></label>
+            <input type="text" name="objet" id="objet" placeholder="objet" required>
+
+            <label for="message"></label>
+            <textarea name="message" id="message" rows="8" cols="40" required>
+
+            </textarea>
+
+            <input type="submit" value="Envoyer">
+        </form>
+    </section>
+</body>
+</html>

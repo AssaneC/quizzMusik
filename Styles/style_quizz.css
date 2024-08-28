@@ -116,6 +116,12 @@ nav   img {
     #explication {
         width: 99.9%;
     }
+
+    #succed_submit {
+        width: 99.9%;
+    }
+
+    
 }
 /* Bouton de soumission */
 #soumettre_question {
@@ -154,7 +160,64 @@ nav   img {
 }
 
 #succed_submit {
-    display: block;
+    display: none;
+    padding: 7px;
+    text-align: center;
+    background-color: #dff0d8;
+    border: 1px solid #d0e9c6;
+    color: #3c763d;
+    width: 70%;
+    border-radius: 15px;
+    font-size: 20px;
+    margin: auto;
+}
+
+#succed_submit h2 {
+    color: #3c763d; /* Couleur du titre verte */
+}
+
+#succed_submit button {
+    background-color: white; /* Teinte de bleu harmonisée */
+    color: blue;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.2rem;
+    margin: 20px auto;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#succed_submit button:hover {
+    background-color: blue; /* Couleur plus sombre au survol */
+    transform: scale(1.05); /* Légère augmentation de taille pour attirer l'attention */
+    color: white;
+}
+
+#succed_submit button:active {
+    background-color: blue; /* Couleur encore plus sombre lors du clic */
+    transform: scale(0.98); /* Légère réduction pour l’effet de clic */
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 600px) {
+    #succed_submit button {
+        width: 90%; /* Assurez une bonne lisibilité sur les petits écrans */
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}
+
+#succed_submit a {
+    color: blue; /* Couleur du lien bleue */
+    text-decoration: none;
+}
+
+#succed_submit a:hover {
+    text-decoration: underline; /* Soulignement au survol */
 }
 
 #explication {
@@ -225,6 +288,11 @@ form input[type="submit"]:hover {
     }
 
     .explication {
+        width: 90%;
+        font-size: 110%;
+    }
+
+    #succed_submit {
         width: 90%;
         font-size: 110%;
     }

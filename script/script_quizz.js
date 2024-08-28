@@ -75,7 +75,7 @@ xml_question.onreadystatechange = function () {
                                 if (xml_post.status === 200) {
                                     console.log("Question soumise avec succès !");
                                     formu.style.display = 'none'; // Cacher le formulaire
-                                    succed_submit.style.display = 'flex'; // Afficher le message de succès
+                                    succed_submit.style.display = 'block'; // Afficher le message de succès
                 
                                 } else {
                                     console.error("Erreur HTTP:", xml_post.status, xml_post.statusText);
@@ -109,13 +109,17 @@ const formu = document.querySelector('#question');
 const btn_sbmt_expl = document.querySelector('#soumettre_question');
 const succed_submit = document.querySelector('#succed_submit');
 const explication = document.querySelector('.explication');
+const second_soumisson = document.querySelector('#succed_submit button');
+
 
 btn_sbmt_expl.addEventListener('click', () => {
     explication.style.display = 'none';
     formu.style.display = 'block';
 });
 
-
+second_soumisson.addEventListener('click', () =>{
+    location.reload();
+})
 // document.querySelector("#question").addEventListener('submit', (event) => {
 //     //empecher la soumission du formulaire afin de verifier d'abord si la question existe deja dans la base de donnees
 //     event.preventDefault();
